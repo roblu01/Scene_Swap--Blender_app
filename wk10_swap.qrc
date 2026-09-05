@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="first">
+    <file>img/scene_swap.jpg</file>
+  </qresource>
+</RCC>
