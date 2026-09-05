@@ -39,6 +39,8 @@ class ArScene:
         self.wg_util.btn_add.clicked.connect(self.press_add)
         self.wg_util.btn_remove.clicked.connect(self.press_remove)
         self.wg_util.btn_hide_toggle.clicked.connect(self.press_hide_toggle)
+        self.wg_util.btn_hide.clicked.connect(self.press_hide)
+        self.wg_util.btn_reveal.clicked.connect(self.press_reveal)
 
         # ADD pixmap image
         pixmap = QtGui.QPixmap(IMG_PATH)
@@ -63,11 +65,14 @@ class ArScene:
         # count up for new world
         name = 'World ' + str(count + 1)
 
-        # ADD new world to the UI list of worlds
-        self.wg_util.cbx_worlds.addItem(name)
-        worlds[name] = []
-        print("New world: " + name)
-        print_worlds()
+        if count > 9:
+            print('World Limit reached!')
+        else:
+            # ADD new world to the UI list of worlds
+            self.wg_util.cbx_worlds.addItem(name)
+            worlds[name] = []
+            print("New world: " + name)
+            print_worlds()
 
     def press_delete_world(self):
         count_w = self.wg_util.cbx_worlds.count()
@@ -120,6 +125,26 @@ class ArScene:
 
         show_text(self, wrld_select_cbx)
         print(f"{wrld_select_cbx} visibility toggled!")
+
+    def press_hide(self):
+        wrld_select_cbx = self.wg_util.cbx_worlds.currentText()
+
+        for asset in worlds[wrld_select_cbx]:
+            asset.hide_set(True)
+            asset.hide_render = True
+
+        show_text(self, wrld_select_cbx)
+        print("All assets are hidden!")
+
+    def press_reveal(self):
+        wrld_select_cbx = self.wg_util.cbx_worlds.currentText()
+        
+        for asset in worlds[wrld_select_cbx]:
+            asset.hide_set(False)
+            asset.hide_render = False
+
+        show_text(self, wrld_select_cbx)
+        print("All assets are revealed!")
 
 
 
