@@ -6,9 +6,8 @@ from PySide6 import QtWidgets, QtGui, QtUiTools
 
 
 # __file__ gives us the current .py file
-DIR_PATH  = '/Users/Koxen/Library/CloudStorage/OneDrive-Personal/file stream/Python for Blender/Final App'
+DIR_PATH  = os.path.dirname(os.path.abspath(__file__))
 IMG_PATH  = DIR_PATH + '/img/scene_swap.jpg'
-LOGO_PATH = DIR_PATH + '/img/blender.png'
 UI_PATH   = DIR_PATH + "/wk10_swap.ui"
 
 worlds = {
