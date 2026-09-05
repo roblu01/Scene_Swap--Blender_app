@@ -38,8 +38,8 @@ class ArScene:
         self.wg_util.btn_delete_world.clicked.connect(self.press_delete_world)
         self.wg_util.btn_add.clicked.connect(self.press_add)
         self.wg_util.btn_remove.clicked.connect(self.press_remove)
-        self.wg_util.btn_hide.clicked.connect(self.press_hide)
-        self.wg_util.btn_unhide.clicked.connect(self.press_unhide)
+        self.wg_util.btn_hide_toggle.clicked.connect(self.press_hide_toggle)
+        #self.wg_util.btn_unhide.clicked.connect(self.press_unhide)
 
         # ADD pixmap image
         pixmap = QtGui.QPixmap(IMG_PATH)
@@ -57,8 +57,7 @@ class ArScene:
         wrld_select_cbx = self.wg_util.cbx_worlds.currentText()
         show_text(self,wrld_select_cbx)
 
-
-    # PRESS
+    # PRESS Create Worlds
     def press_new_world(self):
         # count of worlds
         count = self.wg_util.cbx_worlds.count()
@@ -82,46 +81,48 @@ class ArScene:
         else:
             print('Three worlds must remain')
     
-
+    # PRESS
     def press_add(self):
         wrld_select_cbx = self.wg_util.cbx_worlds.currentText()
-        active_asset = bpy.context.view_layer.objects.active
+        selected_assets = bpy.context.view_layer.objects.selected
 
-        if active_asset in worlds[wrld_select_cbx]:
-            print(f'asset {active_asset.name} already in {wrld_select_cbx}')
-        else:
-            worlds[wrld_select_cbx].append(active_asset)
-            print("Asset Added!")
-            print_worlds()
-            print(f"Selected Asset: {active_asset.name} added to {wrld_select_cbx}\n" )
-            show_text(self, wrld_select_cbx)
+        for asset in selected_assets:
+            if asset in worlds[wrld_select_cbx]:
+                print(f'asset {asset.name} already in {wrld_select_cbx}')
+            else:
+                worlds[wrld_select_cbx].append(asset)
+                print("Asset Added!")
+                print_worlds()
+                print(f"Selected Asset: {asset.name} added to {wrld_select_cbx}\n" )
+                show_text(self, wrld_select_cbx)
 
 
     def press_remove(self):
         wrld_select_cbx = self.wg_util.cbx_worlds.currentText()
-        active_asset = bpy.context.view_layer.objects.active
+        selected_assets = bpy.context.view_layer.objects.selected
 
-        if active_asset not in worlds[wrld_select_cbx]:
-            print('nothing to remove')
-            print(f'asset {active_asset.name} NOT in {wrld_select_cbx}')
-        else:
-            worlds[wrld_select_cbx].remove(active_asset)
-            print_worlds()
-            print("Asset removed!\n")
-            show_text(self, wrld_select_cbx)
+        for asset in selected_assets:
+            if asset not in worlds[wrld_select_cbx]:
+                print('nothing to remove')
+                print(f'asset {asset.name} NOT in {wrld_select_cbx}')
+            else:
+                worlds[wrld_select_cbx].remove(asset)
+                print_worlds()
+                print("Asset removed!\n")
+                show_text(self, wrld_select_cbx)
         
 
-    def press_hide(self):
+    def press_hide_toggle(self):
         wrld_select_cbx = self.wg_util.cbx_worlds.currentText()
 
         for asset in worlds[wrld_select_cbx]:
-            asset.hide_set(True)
-            asset.hide_render = True
+            asset.hide_set(not asset.hide_get())
+            asset.hide_render = not asset.hide_render
 
         show_text(self, wrld_select_cbx)
-        print("All assets are hidden!")
+        print(f"{wrld_select_cbx} visibility toggled!")
 
-    def press_unhide(self):
+    '''def press_unhide(self):
         wrld_select_cbx = self.wg_util.cbx_worlds.currentText()
         
         for asset in worlds[wrld_select_cbx]:
@@ -129,7 +130,7 @@ class ArScene:
             asset.hide_render = False
 
         show_text(self, wrld_select_cbx)
-        print("All assets are revealed!")
+        print("All assets are revealed!")'''
 
 
 
