@@ -99,7 +99,7 @@ class ArScene:
                 print("Asset Added!")
                 print_worlds()
                 print(f"Selected Asset: {asset.name} added to {wrld_select_cbx}\n" )
-                self.show_text(self, wrld_select_cbx)
+                self.show_text(wrld_select_cbx)
 
 
     def press_remove(self):
@@ -114,7 +114,7 @@ class ArScene:
                 worlds[wrld_select_cbx].remove(asset)
                 print_worlds()
                 print("Asset removed!\n")
-                self.show_text(self, wrld_select_cbx)
+                self.show_text(wrld_select_cbx)
         
 
     def press_hide_toggle(self):
@@ -124,7 +124,7 @@ class ArScene:
             asset.hide_set(not asset.hide_get())
             asset.hide_render = not asset.hide_render
 
-        self.show_text(self, wrld_select_cbx)
+        self.show_text(wrld_select_cbx)
         print(f"{wrld_select_cbx} visibility toggled!")
 
     def press_hide(self):
@@ -134,7 +134,7 @@ class ArScene:
             asset.hide_set(True)
             asset.hide_render = True
 
-        self.show_text(self, wrld_select_cbx)
+        self.show_text(wrld_select_cbx)
         print("All assets are hidden!")
 
     def press_reveal(self):
@@ -144,7 +144,7 @@ class ArScene:
             asset.hide_set(False)
             asset.hide_render = False
 
-        self.show_text(self, wrld_select_cbx)
+        self.show_text(wrld_select_cbx)
         print("All assets are revealed!")
 
 
