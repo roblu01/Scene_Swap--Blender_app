@@ -51,7 +51,7 @@ class ArScene:
     def world_changed(self):
         wrld_select_cbx = self.wg_util.cbx_worlds.currentText()
         '''self.press_hide_toggle(self)'''
-        self.show_text(self,wrld_select_cbx)
+        self.show_text(wrld_select_cbx)
 
     def show_text(self,current_world):
         text =''
