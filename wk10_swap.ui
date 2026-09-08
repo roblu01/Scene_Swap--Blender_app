@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>504</width>
-    <height>677</height>
+    <height>747</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,6 +42,27 @@
       </property>
      </item>
     </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="btn_new_world">
+       <property name="text">
+        <string>New World</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_delete_world">
+       <property name="text">
+        <string>Delete World</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QLabel" name="label_2">
@@ -195,40 +216,6 @@
         </size>
        </property>
       </widget>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="rightMargin">
-        <number>20</number>
-       </property>
-       <item>
-        <widget class="QPushButton" name="btn_new_world">
-         <property name="text">
-          <string>New World</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btn_delete_world">
-         <property name="text">
-          <string>Delete World</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_6">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </item>
     </layout>
    </item>
